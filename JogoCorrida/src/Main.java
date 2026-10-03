@@ -2,20 +2,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Veiculo carroCivic = new Veiculo();
-
-        carroCivic.nome = "Civic";
-        carroCivic.cor = "Prata";
         
+        Veiculo carroUno = new Veiculo("Uno", "Branco");
 
-        Veiculo carroUno = new Veiculo();
+        carroUno.acelerar();
+        carroUno.mover();
 
-        carroUno.nome = "Uno";
-        carroUno.cor = "Branco";
-              
 
-        System.out.println(carroCivic.nome);
-        System.out.println(carroUno.cor);
+        System.out.println("Carro" + carroUno.nome );
+        System.out.println("Velocidade" + carroUno.velocidade );
+        System.out.println("Posição" + carroUno.posicao );
         
     }
 
