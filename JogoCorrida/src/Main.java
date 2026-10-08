@@ -5,13 +5,11 @@ public class Main {
         
         Veiculo carroUno = new Veiculo("Uno", "Branco");
 
-        carroUno.acelerar();
-        carroUno.mover();
+        carroUno.setVelocidade(20);
+        
+        System.out.println(" Velocidade do Carro Uno = " + carroUno.getVelocidade());
 
-
-        System.out.println("Carro" + carroUno.nome );
-        System.out.println("Velocidade" + carroUno.velocidade );
-        System.out.println("Posição" + carroUno.posicao );
+    
         
     }
 
