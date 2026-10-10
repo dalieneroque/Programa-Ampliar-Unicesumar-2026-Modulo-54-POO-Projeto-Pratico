@@ -1,16 +1,17 @@
+import java.lang.classfile.ClassElement;
+
 public class Main {
 
     public static void main(String[] args) {
+ 
+        Carro carroMazda = new Carro("Mazda rx-7", "Vermelho");
 
-        
-        Veiculo carroUno = new Veiculo("Uno", "Branco");
+        carroMazda.acelerar();
+        carroMazda.setVelocidade(400);
+        carroMazda.mover();
 
-        carroUno.setVelocidade(20);
-        
-        System.out.println(" Velocidade do Carro Uno = " + carroUno.getVelocidade());
-
-    
-        
+        System.out.println(" Velocidade do Carro Mazda rx-7 = " + carroMazda.getVelocidade() + " A posição é " + carroMazda.getPosicao());
+        System.out.println(" O nome do carro é " + carroMazda.getNome());                
     }
 
 }

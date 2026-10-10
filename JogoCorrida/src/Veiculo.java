@@ -40,7 +40,7 @@ public class Veiculo {
 
 
     public void acelerar() {
-        velocidade++;
+        setVelocidade(velocidade + 1);
     }
 
     public void mover() {
