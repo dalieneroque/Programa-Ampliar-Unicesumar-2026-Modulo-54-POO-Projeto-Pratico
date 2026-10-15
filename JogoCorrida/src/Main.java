@@ -13,5 +13,4 @@ public class Main {
         System.out.println(" Velocidade do Carro Mazda rx-7 = " + carroMazda.getVelocidade() + " A posição é " + carroMazda.getPosicao());
         System.out.println(" O nome do carro é " + carroMazda.getNome());                
     }
-
 }

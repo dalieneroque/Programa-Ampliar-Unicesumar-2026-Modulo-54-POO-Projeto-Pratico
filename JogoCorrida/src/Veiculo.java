@@ -1,4 +1,4 @@
-public class Veiculo {
+public abstract class Veiculo {
     private String nome;
     private String cor; 
     private int velocidade;
@@ -38,12 +38,23 @@ public class Veiculo {
         this.velocidade = velocidade;
     }
 
-
-    public void acelerar() {
-        setVelocidade(velocidade + 1);
+    public abstract void acelerar(); {
+        
     }
+
 
     public void mover() {
         posicao += velocidade;       
     }
 }
+
+
+
+
+
+
+
+
+// Abstração: focamos no que o objeto faz, sem precisar definir todos os detalhes na classe base.
+
+// A classe Veiculo define o que deve existir, mas não como será feito.
