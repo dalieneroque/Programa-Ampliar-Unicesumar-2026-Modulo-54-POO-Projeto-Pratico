@@ -353,6 +353,11 @@ Acesse as aulas e materiais pelo link abaixo:
 
 🔗 [Programa Ampliar — Programação Orientada a Objetos](https://sites.google.com/view/programa-ampliar/2026/tecnologia-532026/programa%C3%A7%C3%A3o-orientado-a-objetos)
 
+
+Acesse os slides utilizados nas monitorias de Programação Orientada a Objetos (POO) em Java.
+
+🔗 [Acessar os slides da monitoria](https://gamma.app/docs/POO-na-pratica-construindo-um-jogo-de-corrida-em-Java-ou8arerlwq7dl48?mode=doc)
+
 ---
 
 <div align="center">
