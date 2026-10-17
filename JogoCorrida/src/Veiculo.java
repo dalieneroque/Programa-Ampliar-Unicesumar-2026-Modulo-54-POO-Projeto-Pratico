@@ -1,9 +1,11 @@
 public abstract class Veiculo {
-    private String nome;
+    //Encapsulamento: atributos privados
+    private String nome;    
     private String cor; 
     private int velocidade;
     private int posicao;
 
+    //Construtur da classe Veiculo 
     public Veiculo (String Nome, String cor) {
         this.nome = Nome;
         this.cor = cor;
@@ -11,21 +13,21 @@ public abstract class Veiculo {
         this.posicao = 0;
     }
 
-    public String getNome() {
-        return nome;
+    //Método abstrato: cada veículo acelera do seu jeito
+    public abstract void acelerar(); {
+        
     }
 
-    public String getcor() {
-        return cor;
+    // Atualiza a posição do veículo somando o valor da velocidade
+    public void mover() {
+        posicao += velocidade;       
     }
 
-    public int getVelocidade() {
-        return velocidade;
-    }
-
-    public int getPosicao() {
-        return posicao;
-    }
+    // Getters e Setters 
+    public String getNome() { return nome;}
+    public String getcor() { return cor;}
+    public int getVelocidade() { return velocidade; }
+    public int getPosicao() { return posicao; }
 
     public void setVelocidade(int velocidade) {
         if (velocidade < 0) {
@@ -36,25 +38,7 @@ public abstract class Veiculo {
         }
 
         this.velocidade = velocidade;
-    }
-
-    public abstract void acelerar(); {
-        
-    }
+    }   
 
 
-    public void mover() {
-        posicao += velocidade;       
-    }
 }
-
-
-
-
-
-
-
-
-// Abstração: focamos no que o objeto faz, sem precisar definir todos os detalhes na classe base.
-
-// A classe Veiculo define o que deve existir, mas não como será feito.
