@@ -7,5 +7,5 @@ public class Caminhao extends Veiculo {
     @Override 
     public void acelerar() {
         setVelocidade(getVelocidade() + 1);
-    }
+    }  
 }

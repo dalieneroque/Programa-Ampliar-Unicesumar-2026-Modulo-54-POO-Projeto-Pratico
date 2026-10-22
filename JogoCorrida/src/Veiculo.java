@@ -6,17 +6,15 @@ public abstract class Veiculo {
     private int posicao;
 
     //Construtur da classe Veiculo 
-    public Veiculo (String Nome, String cor) {
-        this.nome = Nome;
+    public Veiculo (String nome, String cor) {
+        this.nome = nome;
         this.cor = cor;
         this.velocidade = 0;
         this.posicao = 0;
     }
 
     //Método abstrato: cada veículo acelera do seu jeito
-    public abstract void acelerar(); {
-        
-    }
+    public abstract void acelerar(); 
 
     // Atualiza a posição do veículo somando o valor da velocidade
     public void mover() {
