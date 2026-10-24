@@ -33,11 +33,18 @@ public class JogoCorrida extends JPanel implements ActionListener {
                     iniciarCorrida();
                 }
             }
-        });
-
-        //Método de iniciarCorrida 
+        });       
 
     }
+
+    //Método de iniciarCorrida 
+        public void iniciarCorrida() {
+            for (Veiculo v : veiculo) v.resetar();
+            vencedor = null;
+            corridaAtiva = true;
+            timer.start();
+            repaint();
+        }
 
 }
 
