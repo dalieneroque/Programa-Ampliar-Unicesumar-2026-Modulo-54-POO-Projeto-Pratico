@@ -14,7 +14,7 @@ public class JogoCorrida extends JPanel implements ActionListener {
 
     public JogoCorrida() { 
         setPreferredSize(new Dimension(900, 500)); 
-        setBackgroud(new Color(30, 30, 30)); 
+        setBackground(new Color(30, 30, 30)); 
         setFocusable(true); 
 
         veiculo.add(new Carro("Camaro", "#FDD835"));
@@ -22,13 +22,13 @@ public class JogoCorrida extends JPanel implements ActionListener {
         veiculo.add(new Caminhao("Peterbilt", "#090cb8"));
         veiculo.add(new Carro("Ferrari", "#f00d09"));
 
-        //Timer
+        //Timer atualiza a cada 50ms
         timer = new Timer(50, this);
 
         //Criar um código que permite o jogador iniciar a corrida ao pressionar a tecla ENTER
         addKeyListener(new KeyAdapter() {
             @Override 
-            public void KeyPressed(KeyEvent e) {
+            public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     iniciarCorrida();
                 }
@@ -45,6 +45,30 @@ public class JogoCorrida extends JPanel implements ActionListener {
             timer.start();
             repaint();
         }
+
+
+        @Override 
+        public void actionPerformed(ActionEvent e) {
+            if (!corridaAtiva) return;
+
+            for (Veiculo v : veiculo) {
+                //Polimorfismo
+                v.acelerar();
+                v.mover();
+
+                if (v.getPosicao() >= META) {
+                    vencedor = v;
+                    corridaAtiva = false;
+                    timer.stop();
+                }
+                repaint();
+            }
+        }
+
+
+        
+
+
 
 }
 

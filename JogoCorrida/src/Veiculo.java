@@ -38,5 +38,10 @@ public abstract class Veiculo {
         this.velocidade = velocidade;
     }   
 
+    public void resetar() {
+        this.posicao=0;
+        this.velocidade=0;
+    }
+
 
 }
