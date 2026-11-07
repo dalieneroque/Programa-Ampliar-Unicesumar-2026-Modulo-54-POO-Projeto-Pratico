@@ -60,15 +60,60 @@ public class JogoCorrida extends JPanel implements ActionListener {
                     vencedor = v;
                     corridaAtiva = false;
                     timer.stop();
-                }
-                repaint();
+                }              
             }
+             repaint();
         }
 
+       @Override 
+       protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
 
-        
+            //Configuração da qualidade visual dos desenhos(veiculos)
+            g2.setRenderingHint(
+                RenderingHints.KEY_ANTIALIASING, 
+                RenderingHints.VALUE_ANTIALIAS_ON);
 
+            //Desenhando a linha de chegada    
+            g2.setColor(Color.WHITE);
 
+            for (int y = 40; y < 360; y += 20) {
+                g2.fillRect(META + 60, y, 15, 10);
+                g2.fillRect(META + 75, y + 10, 15, 10);
+            }
+
+            //Desenhando os veículos 
+            int y = 80;
+            for (Veiculo v : veiculo) {
+                desenharVeiculo(g2, v, 50 + v.getPosicao(), y);
+
+                g2.setColor(Color.WHITE);
+                g2.setFont(new Font("Arial", Font.BOLD, 14));
+                g2.drawString(
+                    v.getNome() + "Velocidade: " + v.getVelocidade(),
+                    50 + v.getPosicao(), y - 15
+                );
+
+            //Mensagens    
+            g2.setFont(new Font("Arial", Font.BOLD, 26));
+            if (!corridaAtiva && vencedor == null) {
+                g2.setColor(Color.YELLOW);  
+                g2.drawString(
+                    "Pressione a tecla ENTER para iniciar a corrida",
+                    250, 30
+                );
+          } else if (vencedor != null) {
+            g2.setColor(Color.GREEN);
+            g2.drawString(
+                "🏆 Vencedor: " + vencedor.getNome() + "!",
+            300, 30
+            );
+          }
+
+       }
+
+    }
 
 }
 
