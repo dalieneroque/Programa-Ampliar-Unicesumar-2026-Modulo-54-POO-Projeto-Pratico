@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.awt.event.*;
+
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.*;
@@ -92,30 +94,59 @@ public class JogoCorrida extends JPanel implements ActionListener {
                 g2.setFont(new Font("Arial", Font.BOLD, 14));
                 g2.drawString(
                     v.getNome() + "Velocidade: " + v.getVelocidade(),
-                    50 + v.getPosicao(), y - 15
-                );
+                    50 + v.getPosicao(), y - 15);
+                    y += 90;
+
+                }
 
             //Mensagens    
             g2.setFont(new Font("Arial", Font.BOLD, 26));
             if (!corridaAtiva && vencedor == null) {
                 g2.setColor(Color.YELLOW);  
-                g2.drawString(
-                    "Pressione a tecla ENTER para iniciar a corrida",
-                    250, 30
-                );
+                g2.drawString("Pressione a tecla ENTER para iniciar a corrida", 250, 30);
           } else if (vencedor != null) {
             g2.setColor(Color.GREEN);
-            g2.drawString(
-                "🏆 Vencedor: " + vencedor.getNome() + "!",
-            300, 30
-            );
+            g2.drawString("🏆 Vencedor: " + vencedor.getNome() + "!", 300, 30);
           }
-
        }
+    
 
-    }
+    private void desenharVeiculo(Graphics2D g2, Veiculo v, int x, int y) {
+        Color cor = Color.decode(v.getcor()); 
+        g2.setColor(cor);
 
+        if (v instanceof Caminhao) {
+            g2.fillRoundRect(x, y, 40, 35, 8, 8); //cabine
+            g2.fillRect(x + 40, y + 5, 60, 30); //carroceria
+            g2.setColor(Color.BLACK);
+            g2.fillOval(x + 8, y + 28, 16, 16);
+            g2.fillOval(x + 45, y + 28, 16, 16);
+            g2.fillOval(x + 75, y + 28, 16, 16);
+        } else if (v instanceof Carro) {
+            g2.fillRoundRect(x, y, 70, 35, 10, 10); 
+            g2.setColor(Color.BLACK);
+            g2.fillOval(x + 10, y + 28, 15, 15);
+            g2.fillOval(x + 45, y + 28, 15, 15);
+        } else {
+            //Moto
+            g2.fillRoundRect(x, y, 55, 25, 10, 10); 
+            g2.setColor(Color.BLACK);
+            g2.fillOval(x + 5, y + 20, 14, 14);
+            g2.fillOval(x + 35, y + 20, 14, 14);
+        }
+       }
+    
+       public static void main(String[] args) {
+        JFrame frame = new JFrame("Jogo de Corrida POO");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new JogoCorrida());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+       }
+       
 }
+
 
 
 
