@@ -1,36 +1,40 @@
+//Importação das bibliotecas necessárias para listas, eventos de teclado/ timer e interface gráfica.
 import java.util.ArrayList;
 import java.awt.event.*;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.*;
 
+//A classe herda JPanel(é um painel visual) e implementa ActionListener (para escutar as atualizações do Timer)
 public class JogoCorrida extends JPanel implements ActionListener {
-    private ArrayList<Veiculo> veiculo = new ArrayList<>();
-    private Timer timer;
-    private boolean corridaAtiva = false;
-    private Veiculo vencedor = null;
-    private final int META = 750;
+    //Atributos da Classe 
+    private ArrayList<Veiculo> veiculo = new ArrayList<>(); //Lista que guarda os veículos da corrida
+    private Timer timer; //Temporizador que controla o loop de animação
+    private boolean corridaAtiva = false; //Flag (booleano) para saber se a corrida está rodando
+    private Veiculo vencedor = null; //Guarda o veículo que vence a corrisa
+    private final int META = 750; //Linha de chegada (posição X fica em 750 pixels)
 
-
+    //Construtor
     public JogoCorrida() { 
-        setPreferredSize(new Dimension(900, 500)); 
-        setBackground(new Color(30, 30, 30)); 
-        setFocusable(true); 
+        setPreferredSize(new Dimension(900, 500)); //Define a largura (900px) e altura (500px) da janela
+        setBackground(new Color(30, 30, 30)); //Define a cor de fundo(cinza bem escuro)
+        setFocusable(true); //Permite que o painel receba o foco dos eventos de teclado
 
-        veiculo.add(new Carro("Camaro", "#FDD835"));
+        //Objetos que adiciona os competidores a lista (usando polimorfismo: Carro, Moto e Caminhão herdam de Veículo)
+        veiculo.add(new Carro("Camaro", "#FDD835")); 
         veiculo.add(new Moto("Ninja", "#0ef51a"));
         veiculo.add(new Caminhao("Peterbilt", "#090cb8"));
         veiculo.add(new Carro("Ferrari", "#f00d09"));
 
-        //Timer atualiza a cada 50ms
+        //Configura o Timer para disparar um evento a cada 50 milisegundos (20 atualizações por segundo)
         timer = new Timer(50, this);
 
-        //Criar um código que permite o jogador iniciar a corrida ao pressionar a tecla ENTER
+        //Adiciona um leitor de teclas no painel
         addKeyListener(new KeyAdapter() {
             @Override 
             public void keyPressed(KeyEvent e) {
+                //Se a tecla pressionada for ENTER, chama o método para começar a corrida
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     iniciarCorrida();
                 }
@@ -39,16 +43,16 @@ public class JogoCorrida extends JPanel implements ActionListener {
 
     }
 
-    //Método de iniciarCorrida 
+    //Método responsável por preparar e dar a largada da corrida
         public void iniciarCorrida() {
-            for (Veiculo v : veiculo) v.resetar();
-            vencedor = null;
-            corridaAtiva = true;
-            timer.start();
-            repaint();
+            for (Veiculo v : veiculo) v.resetar(); //Percorrer a lista e volta a posição de todos os veículos ao inicio
+            vencedor = null; //Resetar o vencedor da corrida anterior
+            corridaAtiva = true; //Marca que a corrida começou
+            timer.start(); //Inicia a contagem do Timer (começa a rodar o loop do jogo)
+            repaint(); //Solicita a redesenha a tela no Java Swing
         }
 
-
+        
         @Override 
         public void actionPerformed(ActionEvent e) {
             if (!corridaAtiva) return;
