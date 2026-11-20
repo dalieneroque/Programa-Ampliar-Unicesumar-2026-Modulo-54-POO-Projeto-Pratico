@@ -1,7 +1,7 @@
 // A classe Moto herda os atributos e métodos da classe Veiculo.
 public class Moto extends Veiculo{
     
-    // Construtor da classe Moto e recebe o nome e a cor do caminhão como parâmetros.
+    // Construtor da classe Moto e recebe o nome e a cor da moto como parâmetros.
     public Moto(String nome, String cor) {
         super(nome, cor); // Chama o construtor da classe pai (Veiculo), enviando o nome e a cor recebidos.
     }

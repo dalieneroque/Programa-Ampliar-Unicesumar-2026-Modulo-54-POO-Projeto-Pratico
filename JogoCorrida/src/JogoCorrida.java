@@ -55,10 +55,10 @@ public class JogoCorrida extends JPanel implements ActionListener {
         
         @Override //Indica que estamos sobrescrevendo um método da interface ActionListener
         public void actionPerformed(ActionEvent e) { //Método executado quando o Timer disparar o evento
-            if (!corridaAtiva) return; //Se a corrida não estiver ativa, imterrompe a execução 
+            if (!corridaAtiva) return; //Se a corrida não estiver ativa, imterrompe a execução do método
 
             for (Veiculo v : veiculo) { //Percorre todos os veiculos da lista.
-                //Polimorfismo: cada veiculo executa sua própria versão de método
+                // Polimorfismo: cada tipo de veículo executa sua própria implementação do método acelerar().
                 v.acelerar(); //Aumenta a velocidade do veículo 
                 v.mover(); //Atualiza a posição do veículo
 
@@ -82,7 +82,7 @@ public class JogoCorrida extends JPanel implements ActionListener {
                 RenderingHints.VALUE_ANTIALIAS_ON); //Ativa a suavização das bordas
 
             //Desenhando a linha de chegada    
-            g2.setColor(Color.WHITE); //Define a cor branca para os desenhos seguintes
+            g2.setColor(Color.WHITE); // Define a cor branca para desenhar a linha de chegada.
 
             for (int y = 40; y < 360; y += 20) { //Repete o desenho em diferentes posições verticais.
                 g2.fillRect(META + 60, y, 15, 10); //Desenha um retângulo branco na primeira posição
